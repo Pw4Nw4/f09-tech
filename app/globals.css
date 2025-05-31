@@ -1,0 +1,340 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 50% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 196 100% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 196 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* Brand colors as CSS variables */
+    --brand-50: #e6f8ff;
+    --brand-100: #b3e7ff;
+    --brand-200: #80d6ff;
+    --brand-300: #4dc5ff;
+    --brand-400: #1ab4ff;
+    --brand-500: #00a3e6;
+    --brand-600: #0082b8;
+    --brand-700: #00618a;
+    --brand-800: #00415c;
+    --brand-900: #00202e;
+
+    /* Accent colors as CSS variables */
+    --accent1-50: #f0f9ff;
+    --accent1-100: #e0f2fe;
+    --accent1-200: #bae6fd;
+    --accent1-300: #7dd3fc;
+    --accent1-400: #38bdf8;
+    --accent1-500: #0ea5e9;
+    --accent1-600: #0284c7;
+    --accent1-700: #0369a1;
+    --accent1-800: #075985;
+    --accent1-900: #0c4a6e;
+
+    --accent2-50: #f5f3ff;
+    --accent2-100: #ede9fe;
+    --accent2-200: #ddd6fe;
+    --accent2-300: #c4b5fd;
+    --accent2-400: #a78bfa;
+    --accent2-500: #8b5cf6;
+    --accent2-600: #7c3aed;
+    --accent2-700: #6d28d9;
+    --accent2-800: #5b21b6;
+    --accent2-900: #4c1d95;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 196 100% 45%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 196 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-sans tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold sm:text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl font-bold sm:text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-lg font-semibold sm:text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-base font-semibold sm:text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-sm font-semibold sm:text-base md:text-lg;
+  }
+
+  p {
+    @apply leading-relaxed text-sm sm:text-base;
+  }
+
+  .section {
+    @apply py-8 sm:py-12 md:py-20;
+  }
+
+  .container-tight {
+    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Mobile-specific adjustments */
+  @media (max-width: 640px) {
+    .container {
+      @apply px-4;
+    }
+
+    input,
+    select,
+    textarea {
+      @apply text-base; /* Prevent zoom on iOS */
+    }
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--brand-500), var(--accent2-500));
+  }
+
+  .bg-gradient-primary {
+    background-image: linear-gradient(to right, var(--brand-500), var(--accent1-500));
+  }
+
+  .bg-gradient-secondary {
+    background-image: linear-gradient(to right, var(--accent1-500), var(--accent2-500));
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .link-underline {
+    @apply relative;
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--brand-500);
+    transition: all 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  .glass-effect {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-effect {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .dark .pattern-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .pattern-grid {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  .dark .pattern-grid {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite linear;
+  }
+
+  /* Mobile optimizations */
+  .mobile-touch-target {
+    @apply min-h-[44px] min-w-[44px]; /* Minimum touch target size */
+  }
+
+  .mobile-padding {
+    @apply px-4 py-3 sm:px-6 sm:py-4;
+  }
+
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+
+  .mobile-heading {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--brand-300);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--brand-400);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--brand-500);
+  color: white;
+}
+
+/* Mobile-specific overrides */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Fix for iOS input zoom */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  textarea {
+    font-size: 16px;
+  }
+}
